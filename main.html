@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CLI Runner</title>
+    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+    <!-- Icons made by <a href="https://www.flaticon.com/authors/surang" title="surang">surang</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="./node_modules/98.css/dist/98.css" />
+    <style>
+        body,
+        html {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        button {
+            -webkit-app-region: no-drag;
+        }
+    </style>
+    <script>
+        const getFileInfo = require('./scripts/select-script.js').getFileInfo;
+        const registerFile = require('./scripts/select-script.js').registerFile;
+        const resetFields = require('./scripts/load-document.js').prepScripts;
+
+        function registerAndReset(){
+            registerFile(document);
+            resetFields(document);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="window" style="width: 99%; height: 99vh">
+        <div class="title-bar" style="-webkit-app-region: drag">
+            <div class="title-bar-text">CLI Runner</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="window.close()"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div>Click on the buttons below to start a script:</div>
+            <br>
+            <!-- Button Area for starting scripts -->
+            <div id="script-start-area">
+                <fieldset>
+                    <legend>Sample Name</legend>
+                    <div class="field-row">
+                        <button id="sample-button">Sample Script</button>
+                        <label for="sample-button">Sample Description</label>
+                    </div>
+                </fieldset>
+            </div>
+            <br><br><br>
+            <div>Register New Script:</div>
+            <br>
+            <button id="script-selector" onclick="fileToAdd = getFileInfo(document)">Select Script...</button>
+
+            <br>
+            <div id="file-info-area" style="display:none;">
+                <fieldset>
+                    <legend>New Script Information</legend>
+                    <div>Script Name (please enter): <input id="script-name" type="text" aria-colcount="30" value="Script Name"></div> <br>
+                    <div>File Name: <span id="script-filename"></span></div> <br>
+                    <div>Script Path: <span id="script-path"></span></div> <br>
+                    <div>Script Description (please enter): <input id="script-description" type="text" aria-colcount="50" value="Script Description"></div> <br>
+                    <button onclick="registerAndReset()">Register</button>
+                </fieldset>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    resetFields(document);
+</script>
+
+</html>
