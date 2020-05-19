@@ -1,0 +1,32 @@
+{
+  "name": "cli-runner",
+  "version": "1.0.0",
+  "description": "An Electron App for running shell scripts from a GUI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adam-savard/cli-runner.git"
+  },
+  "keywords": [
+    "electron",
+    "shell",
+    "script",
+    "helper"
+  ],
+  "author": "Adam Savard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adam-savard/cli-runner/issues"
+  },
+  "homepage": "https://github.com/adam-savard/cli-runner#readme",
+  "devDependencies": {
+    "electron": "^9.0.0"
+  },
+  "dependencies": {
+    "98.css": "^0.1.16"
+  }
+}
